@@ -1,0 +1,184 @@
+% This is essential for every TeX file, this tells LaTeX what is the type
+% of document you will create, normally, we use article
+\documentclass{article}
+
+% We can choose many formats of paper, and defines its margins and paddings
+\usepackage[a4paper, top=2cm, bottom=2cm, left=3cm, right=3cm,
+    marginparwidth = 1.75cm]{geometry}
+
+% Here, we have some utils about using especial characters, like in html
+% we are using the utf8 pattern, we also are using two special fonts (ams)
+% and the language of our file is in english, so, whatever LaTeX autofills
+% will end up in english
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+% Here it says that every first paragraph will be indented
+\usepackage{indentfirst}
+
+% This is used for images, the first one (graphicx) is used to import and
+% display images, and tikz is a tool that allows us to draw inside our file
+\usepackage{graphicx}
+\usepackage{tikz}
+
+% Self-Explanatory
+\title{Creating a basic document in \LaTeX{}}
+\author{Anghie}
+\date{May 2024}
+
+% This defines which folder we are going to use to get our images
+\graphicspath{{images/}}
+
+% Basically, all your TeX code will end up here, where you begin creating 
+% your file
+\begin{document}
+    \maketitle
+
+    \tableofcontents
+    \newpage
+    
+    \section{Objectives}
+    As I'm learning LaTex, I'll fill this file up with various curious, fun
+    and important things, also commenting the code responsable for this file 
+
+    % Here I'm using the graphicx to import the Euler's graphic and also using
+    % sections, this helps to organize our pdf and allows a lot of nice features
+    % like creating a index in the beginning of our file
+    \section{Mathematics}
+    \subsection{Euler's Formula}
+    This is an attempt to creating a simple paragraph and importing a graphical
+    representation as you can see in figure \ref{fig:eulers}, in page
+    \pageref{fig:eulers}
+
+    % This is one way to display a image, the "[h]" means "here", so it's shows
+    % where it is written in the code, there is also labels, that can be used 
+    % as easy ways to reference something
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\textwidth]{eulersFormula.png}
+        \caption{Euler's Formula}
+        \label{fig:eulers}
+    \end{figure}
+
+    % A subsection is exactly what it sounds like
+    \subsubsection{The most beautiful formula}
+    In maths, we do have something called the most beautiful formula, and that
+    is Euler's identity minus one:
+    % The equation is one of the best characteristics of LaTeX, it allows us
+    % to easily write formulas and special characters
+    \begin{equation}
+        e^{i\pi} -  1 = 0
+    \end{equation}
+    The actual Euler's Identity is $e^{i\theta} = cos\theta + i sin\theta$, and
+    when $\theta = \pi$, we have that:
+    \begin{equation}
+        e^{i\pi} = cos\pi + isin\pi \rightarrow e^{i\pi} = 1 + 0 \rightarrow
+        e^{i\pi} = 1
+    \end{equation}
+    Ergo the \emph{Euler's Identity}
+
+    \subsection{Limit}
+    % \mathbb{} is a function that allows us to use the correct font for something
+    % like the ℝ from the Real Numbers
+    Given $f$ a function where $f:\mathbb{R} \rightarrow \mathbb{R}$ and $\exists a \in\mathbb{R} \rightarrow f(a) = L$, the $\lim_{x\to a} f(x)$ is given as: 
+    \begin{equation}
+        \forall\epsilon > 0 \;\: \exists\delta > 0 : \forall x \in\mathbb{R} \rightarrow
+        0 < |x - a| < \delta \rightarrow |f(x) - L| < \epsilon
+    \end{equation}
+
+    \newpage
+
+    % TikZ, the drawing package, works primarily with coordinates (x,y)
+    % it also uses vary keywords 
+    \section{Drawing in \LaTeX{}}
+    \subsection{Lines}
+    \begin{tikzpicture}
+        \draw (0,0) -- (4,0);
+    \end{tikzpicture}
+
+
+    \subsection{Parabolas}
+    \begin{tikzpicture}
+        \draw (0,0) parabola (4,4);
+    \end{tikzpicture}
+
+
+    \subsection{Controling lines}
+    \begin{tikzpicture}
+        \draw (0,0) .. controls (0,4) and (4,0) .. (4,4);
+    \end{tikzpicture}
+    % The controls points normaly will make it curvy, acting like a magnet
+    % more info at: https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ%3A_A_Tutorial_for_Beginners_(Part_1)—Basic_Drawing
+
+    \subsection{Rectangles}
+    \begin{tikzpicture}
+        \draw (0,0) rectangle (4,2);
+    \end{tikzpicture}
+    % "Wrong" way of drawing a rectangle 
+    % \draw (0,0) -- (4,0)  -- (4,4) -- (0,4) -- (0,0);
+    % This is the "wrong" way, because we have some tools designed to 
+    % make our life easier, e.g. cyle, rectangle, parabola et cetera.
+
+    % For an example, using "cycle", we tell TeX to go back to the
+    % original coordinates
+    % \draw (0,0) -- (4,0)  -- (4,4) -- (0,4) -- cycle;
+    
+    \subsection{Circles}
+    \begin{tikzpicture}
+        \draw (2,2) circle (2cm);
+    \end{tikzpicture}
+    \newpage
+
+    \section{The Fundamentals of Mathematics}
+    \subsection{P1 - USP São Carlos}
+    The following subsections will be each question with it's correct answers
+    \subsubsection{Question - 1.a}
+    For any affirmations $A$ and $B$ the following is an tautology
+    \begin{equation}
+        (A\rightarrow B) \iff (\neg B \rightarrow\neg A)
+    \end{equation}
+
+    Truth Table:
+    \begin{equation}
+        \begin{tabular}{ c|c|c|c|c|c|c }
+            $A$ & $B$ & $\neg A$ & $\neg B$ & $A \rightarrow B$ & $\neg B \rightarrow \neg A$ & $(A \rightarrow B) \iff (\neg B \rightarrow \neg A)$ \\
+            \hline
+            $T$ & $T$ & $F$ & $F$ & $T$ & $T$ & $T$ \\
+            $T$ & $F$ & $F$ & $T$ & $F$ & $F$ & $T$ \\
+            $F$ & $T$ & $T$ & $F$ & $T$ & $T$ & $T$ \\
+            $F$ & $F$ & $T$ & $T$ & $T$ & $T$ & $T$ \\
+        \end{tabular}
+    \end{equation}
+
+    \subsubsection{Question - 1.b}
+    For any affirmations $A$, $B$ and for any absurd $C$ the following are tautologies 
+    \begin{equation}
+        (\neg A\rightarrow C) \rightarrow A \text{ and } [(A \wedge \neg B) \rightarrow C] \rightarrow (A \rightarrow B)
+    \end{equation}
+
+    First truth table:
+    \begin{equation}
+        \begin{tabular}{ c|c|c|c|c }
+            $A$ & $C$ & $\neg A$ & $\neg A \rightarrow C$ & $(\neg A \rightarrow C) \rightarrow A$ \\
+            \hline
+            $T$ & $F$ & $F$ & $T$ & $T$ \\
+            $T$ & $F$ & $F$ & $T$ & $T$ \\
+            $F$ & $F$ & $T$ & $F$ & $T$ \\
+            $F$ & $F$ & $T$ & $F$ & $T$ \\
+        \end{tabular}
+    \end{equation}
+
+    Second truth table:
+    \begin{equation}
+        \begin{tabular}{ c|c|c|c|c|c|c|c }
+            $A$ & $B$ & $\neg B$ & $C$ & $A \wedge\neg B$ & $(A \wedge\neg B) \rightarrow C$ & $A \rightarrow B$ & $[(A \wedge\neg B) \rightarrow C] \rightarrow (A \rightarrow B)$\\
+            \hline
+            $T$ & $T$ & $F$ & $F$ & $F$ & $T$ & $T$ & $T$ \\
+            $T$ & $F$ & $T$ & $F$ & $T$ & $F$ & $F$ & $T$ \\
+            $F$ & $T$ & $F$ & $F$ & $T$ & $F$ & $T$ & $T$ \\
+            $F$ & $F$ & $T$ & $F$ & $F$ & $T$ & $T$ & $T$ \\
+        \end{tabular}
+    \end{equation}
+\end{document}

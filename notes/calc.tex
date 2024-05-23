@@ -1,0 +1,255 @@
+\documentclass{article}
+
+\usepackage[a4paper, top=2cm, bottom=2cm, left=3cm, right=3cm,
+    marginparwidth = 1.75cm]{geometry}
+
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{systeme}
+
+\usepackage{indentfirst}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\title{Anotações de Cálculo}
+\author{Anghie}
+\date{May 2024}
+
+\begin{document}
+    \maketitle
+
+    \tableofcontents
+    \newpage
+
+    \section{Limite}
+    \subsection{Definição}
+    O limite é uma forma de conseguir encontrar um valor
+    proximo a um outro valor onde uma função dê um resultado
+    proximo. Ou seja, definimos uma distância para o resultado
+    ($\epsilon$) que nos fala uma distância para a entrada
+    ($\delta$).
+    \begin{equation*}
+        f(a) = L \rightarrow \lim_{x\to a} f(x) = L
+    \end{equation*}
+
+    Assim, matemáticamente falando, podemos falar que o limite é
+    definido como:
+    \begin{equation*}
+        \forall \epsilon > 0 \; \exists \delta > 0 : \forall x
+        \in \mathbb{R} \rightarrow 0 < |x - a| < \delta \rightarrow
+        |f(x) - L| < \epsilon
+    \end{equation*}
+    \subsection{Resolução}
+    Para resolver um limite, tentamos substituir $x$ por $x_0$
+    porém o valor de $x$ nunca seria de fato igual a $x_0$, o que
+    permite por exemplo:
+    \begin{equation*}
+        \lim_{x\to 0} \frac{2x + 1}{x} = \infty
+    \end{equation*}
+    no caso acima claramente vemos que ao substituir $x$ por
+    $x_0 = 0$ iriamos ter que $\frac{2(0) + 1}{0}$, o que na
+    matemática normal é indefinido, porém como o $x$ só se aproxima
+    de $0$, na realidade não estamos dividindo por $0$, e sim por um
+    número muito próximo a $0$, o que permite a realização da conta
+
+    \newpage
+    \section{Derivada}
+    \subsection{Definição}
+
+    
+    \subsection{Resolução}
+    A derivada é calculada da seguinte forma:
+    \begin{equation*}
+        \lim_{x\to x_0} \frac{f(x) - f(x_0)}{x - x_0}
+    \end{equation*}
+
+    Também podemos falar que $h = x - x_0$, portanto, podemos
+    mostrar a derivada como:
+    \begin{equation*}
+        \lim_{h\to 0} \frac{f(x+h) - f(x)}{h}        
+    \end{equation*}
+    $h\to 0$ pois $x\to x_0$ e $h = x - x_0$
+
+    \subsection{Regra da Cadeia}
+    Toda derivada pode ser representada da seguinte forma:
+    \begin{equation*}
+        \frac{df(g(x))}{dg(x)} \cdot \frac{dg(x)}{dx}
+    \end{equation*}
+
+    No caso de $g(x)$ ser igual a $x$, então a derivada é igual a:
+    \begin{equation*}
+        \frac{df(x)}{dx} \cdot \frac{dx}{dx} = \frac{df(x)}{dx}
+        \cdot 1 = \frac{df(x)}{dx}
+    \end{equation*}
+
+    \subsection{Regra do Tombo}
+    A regra do tombo é uma das mais usadas, junto da regra da
+    cadeia, ela pega, por exemplo: $f(x) = ax^n$ e através de um
+    "tombo", conseguimos a derivada de $f(x)$, como podemos ver
+    abaixo:
+    \begin{equation*}
+        \lim_{x\to x_0} \frac{df(x)}{dx} = nax^{n-1}
+    \end{equation*}
+    caso, queiramos derivar novamente, o tombo permite o seguinte:
+    \begin{equation*}
+        \frac{d^2f(x)}{dx^2} = (n-1) \cdot nax^{(n-1)-1} = (n-1)
+        \cdot nax^{n-2}
+    \end{equation*}
+    Aqui podemos identificar um padrão, $\forall k \in \mathbb{R}$
+    sendo $k \le n$:
+    \begin{equation*}
+        \frac{d^kf(x)}{dx^k} = [\prod_{j = 0}^{k - 1} (n - j)]
+        \cdot x^{(n - k)}
+    \end{equation*}
+
+    \subsection{L'Hôpital}
+    O teorema de L'Hôpital é um dos teoremas mais amados pelos
+    estudantes, visto que ele permite resolver limites
+    indeterminaveis usando derivadas, ou seja, quando no limite
+    obtemos $\frac{0}{0}$ ou $\frac{\infty}{\infty}$
+    \begin{equation*}
+        \lim_{x\to 1} \frac{x^2 - 1}{x^2 - 2x + 1} \stackrel{LH}{=}
+        \lim_{x\to 1} \frac{2}{2x - 2} = \frac{2}{0} = \infty
+    \end{equation*}
+
+    Se fossemos resolver o mesmo limite sem o uso de L'Hopital
+    teriamos que fazer:
+    \begin{equation*}
+        \lim_{x\to 1} \frac{x^2 - 1}{x^2 - 2x + 1} =
+        \frac{(x + 1)(x - 1)}{(x - 1)^2} = \frac{x + 1}{x - 1}
+        = \frac{2}{0} = \infty
+    \end{equation*}
+
+    \subsection{Regra do Produto}
+    Ao derivarmos um produto devemos realizar a seguinte fórmula:
+    \begin{equation*}
+        \frac{df(x)\cdot g(x)}{dx} = \frac{df(x)}{dx}\cdot g(x) +
+        f(x) \cdot\frac{dg(x)}{dx}
+    \end{equation*}
+
+    \subsection{Regra do Quociente}
+    Se quisermos derivar uma fração qualquer, como por exemplo a
+    $\frac{f(x)}{g(x)}$ teremos como sua derivada a seguinte
+    equação:
+    \begin{equation*}
+        \frac{d\frac{f(x)}{g(x)}}{dx} = \frac{\frac{df(x)}{dx}
+        \cdot g(x) - f(x)\cdot\frac{dg(x)}{dx}}{g^2(x)}
+    \end{equation*}
+
+    Exemplo: $f(x) = \frac{1}{x}$, considere $1 = f(x)$ e $x = g(x)$
+    substituindo na equação acima temos:
+    \begin{equation*}
+        \frac{d}{dx}(\frac{1}{x}) = \frac{\frac{d}{dx}1 \cdot x - 1
+        \cdot \frac{d}{dx}x}{x^2} = \frac{0 \cdot x - 1 \cdot
+        1}{x^2} = -\frac{1}{x^2} 
+    \end{equation*}
+
+    Porém, neste caso poderiamos ter usado a regra do tombo, pois
+    $f(x) = \frac{1}{x} = x^{-1}$, logo:
+    \begin{equation*}
+        \frac{df(x)}{dx} = \frac{dx^{-1}}{dx} \rightarrow - 1 \cdot
+        x^{-1 - 1} = - x^{-2} = -\frac{1}{x^2}
+    \end{equation*}
+
+    \subsection{Máximos e Mínimos Locais}
+    Um máximo/mínimo local será um ponto $c$ em um intervalo $]a,b[$
+    dentro do domínio da função onde $\nexists x \in\; ]a,b[ \;\in
+    dom(f)$ tal que $\stackrel{\text{máx}}{f(c)}\; > f(x)$ ou
+    $\stackrel{\text{mín}}{f(c)}\; < f(x)$. Conseguimos descobrir os
+    máximos e mínimos locais através dos pontos críticos da função
+    que a derivada dá.
+
+    \subsubsection*{Pontos Críticos}
+    Para descobrir os pontos críticos de uma função, primeiro
+    derivamos a mesma, depois tentamos obter as raízes da derivada
+
+    \subsection{Concavidade}
+
+    \subsection{Assíntotas}
+
+    \section{Integral}
+    A integral de uma função é uma forma de descobrir qual a área da
+    função em certo intervalo. Seja $f(x)$ dada pelo seguinte gráfico
+    e o intervalo seja $[a,b]$, uma representação simplória da
+    integral seria:
+
+    \begin{equation*}
+        \begin{tikzpicture}
+            \draw (-2, 0) -- (2, 0); 
+            \draw (0, -1) -- (0, 2); 
+
+            \draw[red, thick](0, 0.5) -- (0, 1);
+            \draw[red, thick](0, 1) -- (1, 1);
+
+            \draw[blue, dashed](1, 0) -- (1, 1);
+            \draw[blue, thick](-2, -0.5) -- (-1, 0) -- (0, 0.5) --
+            (1, 1) -- (2, 1.5);
+
+            \draw[green, dashed](0, 0) -- (0, 0.5);
+            \draw[green, dashed] (0.5, 0) -- (0.5, 0.75);
+            \draw[green, thick] (0, 0.75) -- (0.5, 0.75);
+
+            \draw[red, fill, opacity = 0.2](0, 0.5) -- (0, 1) --
+            (1, 1) -- (0, 0.5);
+            \draw[red, fill, opacity = 0.2] (0.5, 0.74) -- (0, 0.74)
+            -- (0, 0.5);
+
+            \draw[blue, fill, opacity = 0.2](0.5, 0) -- (1, 0) --
+            (1, 1) -- (0.5, 0.75) -- (0.5, 0);
+
+            \draw[green, fill, opacity = 0.2](0, 0) -- (0.5, 0) --
+            (0.5, 0.75) -- (0, 0.5) -- (0, 0);
+
+            \node[blue] at (-0.15, -0.15) {\small $a$};
+            \node[blue] at (1, -0.15) {\small $b$};
+            \node[blue] at (0.9, 1.2) {\footnotesize $f(b)$};
+
+            \node[green] at (0.5, -0.15) {\small $x_0$};
+            \node[green] at (-0.4, 0.8) {\footnotesize $f(x_0)$};
+        \end{tikzpicture}
+    \end{equation*}
+
+    A formula da área, $A$, no intervalo $[a, b]$ de $f(x)$ é:
+    \begin{equation*}
+        (b - a) \cdot\int_{a}^{b} f(x)dx = A 
+    \end{equation*}
+
+    \subsection{Teorema Fundamental do Cálculo}
+    Seja $\mathbb{I}$ intervalo fechado, limitado e que seja infito.
+    Sejam $f: \mathbb{I}\rightarrow\mathbb{R}$ contínua e $F:
+    \mathbb{I}\rightarrow\mathbb{R}$ uma função. São equivalentes.
+    \begin{equation*}
+        \text{a) } \exists a\in\mathbb{I}:F(x) = F(a) +
+        \int_{a}^{x}f(t)dt
+    \end{equation*}
+    \begin{equation*}
+        \text{b) } F \text{ é derivável e } F'(x) = f(x) \forall x
+        \in\mathbb{I} \text{ onde $x$ não está nas extremidades de }
+        \mathbb{I}
+    \end{equation*}
+
+    \subsubsection*{Demonstração}
+    Vamos provar que o item b implica o item a. Considere $G$, $f$ e
+    $F$
+    \begin{equation*}
+        G(x) = \int_{a}^{x}f(t)dt
+    \end{equation*}
+    Pela primeira parte:
+    \begin{equation*}
+        G'(x) = f(x)
+    \end{equation*}
+    \begin{equation*}
+        [F(x) - G(x)]' = f(x) - f(x) = 0
+    \end{equation*}
+    Logo $G$ e $F$ se diferem por uma constante. Note que $G(a) = 0$.
+    Ou seja a constate é $F(a)$ 
+    \begin{equation*}
+        \therefore F(x) = F(a) + G(x) = F(a) + \int_{a}^{x}f(t)dt
+    \end{equation*}
+
+    hahahahahahaha
+\end{document}
