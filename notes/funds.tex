@@ -1,0 +1,83 @@
+\documentclass{article}
+
+\usepackage[a4paper, top=2cm, bottom=2cm, left=3cm, right=3cm,
+    marginparwidth = 1.75cm]{geometry}
+
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{systeme}
+
+\usepackage{indentfirst}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\title{Anotações de Fundamentos da Matemática}
+\author{Anghie}
+\date{May 2024}
+
+\begin{document}
+    \maketitle
+
+    \tableofcontents
+    \newpage
+
+    \section{Listas de Exercícios}
+    \subsection{Lista 3}
+    Lista sobre funções
+    \subsection*{Exercício 1}
+    Sejam $f:A\rightarrow B$ e $g:B\rightarrow C$ funções, $C_1$
+    e $C_2$ subsconjuntos de $A$, e $Y_1$ e $Y_2$ subsconjuntos
+    de $B$. Mostre as seguintes afirmações.
+    \subsubsection*{1.a: $f(C_1\cup C_2) = f(C_1)\cup f(C_2)$}
+    Resolução:
+    \begin{equation*}
+        \begin{aligned}
+            \forall c_1\in C_1 \rightarrow f(c_1)\in f(C_1) \\
+            \forall c_2\in C_2 \rightarrow f(c_2)\in f(C_2)
+        \end{aligned}
+    \end{equation*}
+
+    Também temos que:
+    \begin{equation*}
+        \begin{aligned}
+            \forall c_1\in C_1 \rightarrow c_1\in C_1\cup C_2 \\
+            \forall c_2\in C_2 \rightarrow c_2\in C_1\cup C_2
+        \end{aligned}
+    \end{equation*}
+
+    Portanto, como mostrado anteriormente:
+    \begin{equation*}
+        \begin{aligned}
+            \forall x\in C_1\cup C_2 \rightarrow f(x)\in
+            f(C_1\cup C_2) \\
+            \forall x\in C_1\cup C_2 \rightarrow f(x)\in
+            f(C_1)\cup f(C_2) \\
+            \therefore \; f(C_1\cup C_2) = f(C_1)\cup f(C_2)
+        \end{aligned}
+    \end{equation*}
+
+    \subsubsection*{1.b: $f(C_1\cap C_2) \subset f(C_1)\cap
+    f(C_2)$\normalfont{. Mostre que a igualdade não vale sempre}}
+    Resolução:
+    \begin{equation*}
+        \begin{aligned}
+            \forall c_1\in C_1 \rightarrow f(c_1)\in f(C_1) \\
+            \forall c_2\in C_2 \rightarrow f(c_2)\in f(C_2) \\
+            x\in C_1\cap C_2 \rightarrow x\in C_1, C_2
+        \end{aligned}
+    \end{equation*}
+
+    Temos:
+    \begin{equation*}
+        \begin{aligned}
+            \forall x\in C_1\cap C_2 \rightarrow f(x)\in
+            f(C_1\cap C_2) \\
+            \forall x\in C_1\cap C_2 \rightarrow f(x)\in
+            f(C_1)\cap f(C_2) \\
+        \end{aligned}
+    \end{equation*}
+\end{document}
