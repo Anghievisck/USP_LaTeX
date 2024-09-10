@@ -1,0 +1,200 @@
+\documentclass{article}
+
+\usepackage[a4paper, top=2cm, bottom=2cm, left=3cm, right=3cm,
+    marginparwidth = 1.75cm]{geometry}
+
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{systeme}
+
+\usepackage{indentfirst}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\title{Correção P2 de Fundamentos da Matemática}
+\author{Pedro Luís Anghievisck}
+\date{Junho - 2024}
+
+\begin{document}
+    \maketitle
+
+    \tableofcontents
+    \newpage
+
+    \section{Correção do exercício 1}
+    Sejam $f:A\rightarrow B$ e $g:B\rightarrow C$ funções e 
+    conjuntos $C_1, C_2 \subset A$ e $Y_1, Y_2 \subset B$. 
+    Identifique cada afirmação como verdadeira ou falsa. 
+    Justifique:
+    \subsection*{Item \emph{a}}
+    \begin{equation*}
+        \text{[ F ] : } f(C_1 \cup C_2) = f(C_1) \cup f(C_2)
+        \text{ e } f(C_1 \cap C_2) = f(C_1) \cap f(C_2)
+    \end{equation*}
+
+    A afirmação anterior é falsa, pois podemos observar que
+    $f$ pode não ser injetora, o que significa que $\exists x
+    \in C_1$ e $x \notin C_2 : f(x) = f(y)$, onde $y \in C_2$ e
+    $y \notin C_1$ o que implica que, como $x$ e $y$ não estão
+    em $C_1\cap C_2$, $f(C_1\cap C_2) \neq f(C_1) \cap f(C_2)$. 
+
+    Visto que $x\in C_1 \rightarrow f(x)\in f(C_1)$ e $y\in C_2
+    \rightarrow f(y) \in f(C_2)$, mas $x\notin C_2 \rightarrow
+    f(x)\notin f(C_2)\rightarrow f(x)\notin f(C_1\cap C_2)$ de
+    mesma forma: $y\notin C_1 \rightarrow f(y)\notin f(C_1)
+    \rightarrow f(y)\notin f(C_1\cap C_2)$. Por fim,
+    sabemos que como $f(x) = f(y), f(x)$ e $f(y)\in f(C_1) \cap
+    f(C_2)$.
+    
+    O que nos mostra que realmente: 
+    \begin{equation*}
+        f(C_1\cap C_2)\neq f(C_1)\cap f(C_2)
+    \end{equation*}
+
+    \section{Exercício 2 alternativo}
+    Seja $\mathcal{F}$ o conjunto de todas as funções de
+    $\mathbb{R}$ em $[0, +\infty[$. Mostre que a relação
+    $f\leq g$ definida por
+    \begin{equation*}
+        f(x)\leq g(x),\;\; \forall x\in\mathbb{R},
+    \end{equation*}
+    é uma ordem parcial em $\mathcal{F}$ e determine o mínimo
+    de $\mathcal{F}$ segundo essa ordem.
+
+    Logo, para $\leq$ ser uma relação de ordem parcial, é preciso
+    mostrar que dado dois elementos do conjunto, a relação deve
+    ser reflexiva, transitiva e antiassimétrica, respectivamente:
+    \begin{equation*}
+        \begin{aligned}
+            \forall x\in\mathbb{R}, \\
+            \forall a(x)\in\mathcal{F}, a(x)\leq a(x)
+        \end{aligned}
+    \end{equation*}
+    \begin{equation*}
+        \begin{aligned}
+            \forall a(x),b(x),c(x)\in\mathcal{F} : a(x)\leq b(x),
+            b(x)\leq c(x)\rightarrow a(x)\leq c(x) \\
+            \forall a(x),b(x)\in\mathcal{F} : a(x)\leq b(x)
+            \text{ e }b(x)\leq a(x)\rightarrow a(x) = b(x)
+        \end{aligned}
+    \end{equation*}
+
+    Note que para obtermos um mínimo precisamos achar uma função
+    com valor fixo ao menor valor do domínio, que no nosso caso
+    é o próprio $0$, visto que o contradomínio de todas as
+    funções é $[0, +\infty[$, portanto, seja $f(x)\in\mathcal{F}
+    : f(x) = 0$, $\forall x\in\mathbb{R}$ assim temos:
+    \begin{equation*}
+        f(x)\leq g(x),\;\;\forall g(x)\in\mathcal{F}\text{ e }
+        \forall x\in\mathbb{R}\rightarrow f(x)<g(x)\text{ ou }
+        f(x)=g(x)
+    \end{equation*}
+
+    \section{Correção do exercício 3 e item alternativo}
+    Escolha UMA das umas afirmações abaixo e prove por indução.
+    
+    I) Para todo natural $n$, $9$ divide $4^n + 15n - 1$.
+    
+    II) Para todo natural $n$, $3$ divide $n^3 - n$.
+    
+    III) Para todo natural $n\neq 0$, $3^n$ divide
+    $4^{3^{n-1}} - 1$
+    \subsection*{Correção do item \emph{III}}
+    Proposição:
+    \begin{equation*}
+        P(x): \forall x\in\mathbb{N}\setminus\{0\}
+        3^x|4^{3^{x-1}}-1
+    \end{equation*}
+
+    Caso 0:
+    \begin{equation*}
+        3^1|4^{3^{1-1}}-1 = 3|4^1 - 1\rightarrow 3|3
+    \end{equation*}
+
+    Assumindo caso $P(n)$, façamos $P(n+1)$:
+    \begin{equation*}
+        \begin{aligned}
+            3^{n+1}|4^{3^{n+1-1}}-1 = (3^n\cdot 3)|4^{3^n}-1 \\
+            = 3^n\cdot3|(4^{3^{n-1}}\cdot4^{3}) - 1 =
+            3^n|4^3\cdot(1^{1^{n-1}}\cdot1) - 1 \\
+            = 3^n|4^{3^{n-1}} - 1 \rightarrow P(n)
+        \end{aligned}
+    \end{equation*}
+
+    Assim, $P(n+1)$ vale, portanto, $\forall x\in\mathbb{N}
+    \setminus\{0\}$, $3^x$ divide $4^{3^{x-1}}-1$
+
+    \subsection*{Item alternativo \emph{II}}
+    Proposição:
+    \begin{equation*}
+        P(x): \forall x\in\mathbb{N} \rightarrow 3|x^3 - x =
+        3|x(x^2 - 1) = 3|x(x + 1)(x - 1)
+    \end{equation*}
+
+    Caso n = 0 vale pois:
+    \begin{equation*}
+        P(0):  3 | 0^3 - 0 = 3|0
+    \end{equation*}
+
+    Assumindo que $P(n)$, façamos $P(n + 1)$:
+    \begin{equation*}
+        \begin{aligned}
+            P(n+1) = 3|(n + 1)[(n + 1) + 1][(n + 1) - 1] \\
+            = 3|(n+1)(n+2)n = 3|(n^2 + 2n + n + 2)n \\
+            = 3|n^3 + 3n^2 + 2n
+        \end{aligned}
+    \end{equation*}
+
+    É possível observar que $3$ sempre dividirá $3n^2$, já que
+    $n^2$ está sendo multiplicado por $3$, o que o torna um
+    múltiplo de $3$, assim precisamos provar que $\forall
+    n\in\mathbb{N}$, $n^3 + 2n$ é um múltiplo de $3$, pois
+    todo múltiplo de $3$ mais outro múltiplo de $3$ resulta
+    em um múltiplo de 3. Portanto precisamos provar que:
+    \begin{equation*}
+        B(x): 3|x^3 + 2x, \forall x\in\mathbb{N}
+    \end{equation*}
+
+    Assim, através do \emph{PIF} (Princípio da Indução Infinita), iremos
+    provar $B(x)$.
+
+    Caso n = 0:
+    \begin{equation*}
+        B(0): 3|0^3 + 2\cdot 0 = 3|0 
+    \end{equation*}
+
+    Assumindo $B(n)$, faremos $B(n+1)$:
+    \begin{equation*}
+        \begin{aligned}
+            3|(n+1)^3 + 2\cdot (n+1) = 3|(n^3 + 3n^2 + 3n + 1) +
+            (2n + 2) \\
+            = 3|n^3 + 3n^2 + 5n + 3 = 3|n^3 + 5n \\
+            = 3|n^3 + 2n + 3n = 3|n^3 + 2n \rightarrow
+            \text{ $B(n)$ vale}
+        \end{aligned}
+    \end{equation*}
+
+    Como visto acima, usamos mais uma vez do fato que múltiplos 
+    de $3$ somados resultam em outro múltiplo de $3$, e chegamos
+    a conclusão que queriamos. Assim provando $B(x)$ pelo
+    \emph{PIF}, acabamos também provando $P(x)$. Logo, para todo
+    $n\in\mathbb{N}$, $3$ divide $n^3 - n$.
+
+    \section[Observação]{Exercício 4}
+    Em minha prova, caiu a seguinte versão da questão:
+    \begin{equation*}
+        f((a,b),c) = f(a,b\cdot c)
+    \end{equation*}
+    
+    E em minha resolução eu acabei provando e usando a outra
+    versão:
+    \begin{equation*}
+        f(a,b)\cdot f(a,c) = f(a,b+c)
+    \end{equation*}
+
+    Por isso, não incluirei a resolução a outra versão da 4.
+\end{document}

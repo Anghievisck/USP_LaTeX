@@ -1,0 +1,152 @@
+\documentclass{article}
+
+\usepackage[a4paper, top=2cm, bottom=2cm, left=3cm, right=3cm,
+    marginparwidth = 1.75cm]{geometry}
+
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{systeme}
+
+\usepackage{indentfirst}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\title{Anotações de Fundamentos da Matemática}
+\author{Anghie}
+\date{May 2024}
+
+\begin{document}
+    \maketitle
+
+    \tableofcontents
+    \newpage
+
+    \section{Listas de Exercícios}
+    \subsection{Lista 3}
+    Lista sobre funções
+    \subsection*{Exercício 1}
+    Sejam $f:A\rightarrow B$ e $g:B\rightarrow C$ funções, $C_1$
+    e $C_2$ subsconjuntos de $A$, e $Y_1$ e $Y_2$ subsconjuntos
+    de $B$. Mostre as seguintes afirmações.
+    \subsubsection*{1.a: $f(C_1\cup C_2) = f(C_1)\cup f(C_2)$}
+    Resolução:
+    \begin{equation*}
+        \begin{aligned}
+            \forall c_1\in C_1 \rightarrow f(c_1)\in f(C_1) \\
+            \forall c_2\in C_2 \rightarrow f(c_2)\in f(C_2)
+        \end{aligned}
+    \end{equation*}
+
+    Também temos que:
+    \begin{equation*}
+        \begin{aligned}
+            \forall c_1\in C_1 \rightarrow c_1\in C_1\cup C_2 \\
+            \forall c_2\in C_2 \rightarrow c_2\in C_1\cup C_2
+        \end{aligned}
+    \end{equation*}
+
+    Portanto, como mostrado anteriormente:
+    \begin{equation*}
+        \begin{aligned}
+            \forall x\in C_1\cup C_2 \rightarrow f(x)\in
+            f(C_1\cup C_2) \\
+            \forall x\in C_1\cup C_2 \rightarrow f(x)\in
+            f(C_1)\cup f(C_2) \\
+            \therefore \; f(C_1\cup C_2) = f(C_1)\cup f(C_2)
+        \end{aligned}
+    \end{equation*}
+
+    \subsubsection*{1.b: $f(C_1\cap C_2) \subset f(C_1)\cap
+    f(C_2)$\normalfont{. Mostre que a igualdade não vale sempre}}
+    Resolução:
+    \begin{equation*}
+        \begin{aligned}
+            \forall c_1\in C_1 \rightarrow f(c_1)\in f(C_1) \\
+            \forall c_2\in C_2 \rightarrow f(c_2)\in f(C_2) \\
+            x\in C_1\cap C_2 \rightarrow x\in C_1, C_2
+        \end{aligned}
+    \end{equation*}
+
+    Temos:
+    \begin{equation*}
+        \begin{aligned}
+            \forall x\in C_1\cap C_2 \rightarrow f(x)\in
+            f(C_1\cap C_2) \\
+            \forall x\in C_1\cap C_2 \rightarrow f(x)\in
+            f(C_1)\cap f(C_2) \\
+        \end{aligned}
+    \end{equation*}
+
+    \section{Cortes de Dedekind}
+    \subsection{Soma de cortes}
+    \subsubsection*{Elemento Neutro}
+    Seja $C_r$ e $C_0$ em $\mathbb{Q}$, temos que $C_0$ é o 
+    elemento neutro da soma, visto que, para todo
+    $r\in\mathbb{Q}$, $C_r = (A_r, B_r) \oplus C_0 = (A_0, B_0)$
+    estará contido em $C_r$:
+    \begin{equation*}
+        A_r\oplus A_0 \rightarrow \forall a\in A_r \forall a_0\in
+        A_0, a+a_0\in A_r
+    \end{equation*}
+
+    A afirmação acima é verdade pois, para qualquer
+    $r\in\mathbb{Q}$, $A_r = {q\in\mathbb{Q} : q < r}$, e 
+    $A_0 = {q\in\mathbb{Q} : q < 0}$. Portanto, pegamos
+    um número qualquer menor que $r$ e adicionamos a um
+    número negativo qualquer, ou seja:
+    \begin{equation*}
+        \begin{aligned}
+            \forall a\in A_r, \forall a_0\in A_0 \\
+            a + a_0 < a \\
+            a < r \rightarrow a + a_0 < r \\
+            \therefore a + a_0\in A_r
+        \end{aligned}
+    \end{equation*}
+
+    Da mesma forma temos que como $B_r = {q\in\mathbb{Q} :
+    q\geq r}$ e $B_0 {q\in\mathbb{Q} : q\geq 0}$ estermos pegando
+    um racional qualquer que seja maior ou igual a $r$ e um 
+    racional positivo qualquer ou igual a 0, teremos:
+    \begin{equation*}
+        \begin{aligned}
+            \forall b\in B_r, \forall b_0\in B_0 \\
+            b + b_0 \geq b \\
+            b \geq r \rightarrow b + b_0 \geq r \\
+            \therefore b + b_0 \in B_r
+        \end{aligned} 
+    \end{equation*}
+
+    \subsubsection*{Elemento Oposto}
+    \subsubsection*{Lema 1:}
+    Se $C = (A,B)\in\mathcal{F}$, então $\exists -C = (-B,-A)
+    \in\mathcal{F}$.
+
+    \subsubsection*{Lema 2:}
+    $\forall C\in\mathcal{F}$ temos que $inf(B-A) = 0$
+
+    \subsubsection*{Demonstração}
+    Seja $C\in\mathcal{F}$, então $C\oplus-C = C_0$, para provar
+    isso, teremos que considerar dois casos distintos:
+
+    \subsubsection*{Caso 1: $inf(B)\notin B$}
+    \begin{equation*}
+        \begin{aligned}
+            \forall a\in A, \forall b\in B \rightarrow a < b \\
+            \therefore a - b < 0 \rightarrow a - b\in A_0 
+        \end{aligned}
+    \end{equation*}
+    Para mostrar que $B-A = B_0$ precisamos de um passo a mais,
+    $\exists r\in A : -r > 0$, também pelo lema 2 teremos que:
+    \begin{equation*}
+        \begin{aligned}
+            \exists a\in A, b\in B : 0 < b - a < - r \\
+            \therefore\exists q\in\mathbb{Q} : -r = q + b - a
+        \end{aligned}
+    \end{equation*} 
+
+    \subsubsection*{Caso 2: $inf(B)\in B$}
+\end{document}

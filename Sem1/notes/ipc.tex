@@ -1,0 +1,173 @@
+\documentclass{article}
+
+\usepackage[a4paper, top=2cm, bottom=2cm, left=3cm, right=3cm,
+    marginparwidth = 1.75cm]{geometry}
+
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{systeme}
+
+\usepackage{indentfirst}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\title{Aulão de IPC}
+\author{Anghie}
+\date{Junho - 2024}
+
+\begin{document}
+    \maketitle
+
+    \tableofcontents
+    \newpage
+
+    \section{Funções}
+    \subsection*{Definição}
+    Uma função em programação não é tão diferente de uma função
+    na matemática, ou seja, uma função na programação recebe um
+    valor de um tipo, e devolve um valor em algum tipo.
+    Mas o que uma função faz em si? Matematicamente falando,
+    seja $f$ uma função que pega um valor em $\mathbb{N}$ e
+    retorna um valor em $\mathbb{Z}$, ou seja:
+    \begin{equation*}
+        f(x) = x * (-1)^x
+    \end{equation*}
+
+    Em resumo, a função acima pega um $x\in\mathbb{N}$ qualquer
+    que se for par vai ser igual a ele mesmo, e se for ímpar
+    vai ser igual ao oposto dele.
+
+    Mas o que isso tem haver com programação? Vamos criar a mesma
+    função, mas em C:
+
+    \subsection*{Exemplo}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=1\textwidth]{paridadeEmC.png}
+        \caption{Nossa função em C}
+        \label{fig:paridadeEmC}
+    \end{figure}
+    \newpage
+
+    Como vocês puderam ver, nosso código é um código simples,
+    pois ele vai pedir ao usuário um inteiro qualquer,
+    e vai falar que o valor desse inteiro será o resultado da
+    nossa função. E o que nossa função faz?
+
+    Bom, note que nossa função é do tipo inteiro, ou seja,
+    no final da execução dela, no return terá um valor do tipo
+    \emph{int}, e o que ela recebe? Dentro do paranteses da
+    nossa função está escrito \emph{int x}, o que significa que
+    ela recebe um valor qualquer chamado de \emph{x} que é do
+    tipo inteiro.
+    E como ela funciona? Bom, ela verá se o nosso \emph{x} em
+    questão é par, e retornará o próprio \emph{x} se for verdade
+    ou o oposto dele, se \emph{x} for ímpar.
+    \newpage
+
+    \section{Vetores}
+    \subsection{Definição}
+    Todos nós sabemos o que é um vetor graças a GA, mas e na
+    nossa queirda programação? Bom, uma variável que é um vetor
+    é nada mais nada menos que uma variável que pode guardar
+    diversos valores, portanto, um vetor em C é basicamente um
+    conjunto. Primeiramente, nos lembremos do que é um conjunto:
+    
+    Um conjunto na matemática é, de maneria simplória, um 
+    conjunto é uma junção de números, por exemplo, os 
+    $\mathbb{N}$ são todos os números maiores ou iguais a $0$
+    sem uma parte racional. Mas a principal e mais importante
+    diferença entre um vetor e um conjunto na programação é que
+    um vetor pode ser de diferentes tipos, como \emph{char, int,
+    float} etc.
+    
+    Na prática um vetor é uma forma mais fácil de se organizar
+    múltiplas variáveis do mesmo tipo, para criar um vetor, 
+    primeiro falamos para o computador o nome dele, depois 
+    colocamos entre [  ] o tamanho que desejamos para o nosso
+    vetor, para facilitar o entendimento, vamos a um exemplo:
+    \subsection*{Exemplo}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=1\textwidth]{vetoresEmC.png}
+        \caption{Vetor em C}
+        \label{fig:vetoresEmC}
+    \end{figure}
+
+    Como é possivel observar, temos 2 diferentes vetores em
+    nosso exemplo, e eles foram criados para receber os valores:
+    \emph{"Pedro", 2, 4, 22 e 13}. Note que o número de elementos
+    é menor do que o número que coloquei nos vetores, temos
+    apenas $5$ elementos, mas temos $9$ elementos no total nos
+    vetores. Isso acontece porque no C, uma \emph{string} é
+    tratada como um vetor de \emph{char}. Ainda não vimos isso,
+    mas uma \emph{string} é uma linha de texto com mais de um
+    caractere. Ou seja, o valor "Pedro" é na verdade um vetor de
+    $5$ caracteres: ['P','e','d','r','o'].
+
+    Vale a pena saber o conceito de uma \emph{string}, apesar
+    dela não existir de fato em C por conta do \emph{\%s}, isso
+    diz para o nosso querido \emph{scanf} que ele vai receber um
+    valor do tipo \emph{string}, o que permite o não uso do 
+    \emph{for}, como é visto para preencher nosso vetor de
+    números favoritos, e ele também funciona da mesma forma para
+    o \emph{printf}.
+
+    Vale ressaltar que para usar um vetor em C, temos que nos
+    lembrar que ele guarda item a item usando um digito como
+    identificador. Ou seja, em nosso vetor de números favoritos
+    ele terá como identificadores todos os naturais em $[0, 4[$
+    ou seja, $0, 1, 2 e 3$, nesta mesma ordem. Isso está sendo
+    usado nos \emph{for} acima, onde o valor de \emph{i} também
+    é todos os naturais no nosso intervalo de $[0,4[$, em ordem
+    crescente. Isso também explica como usamos um vetor. Visto
+    que normalmente vamos manipular um elemento por vez nos 
+    vetores, para especificar qual, digitamos o nome do vetor
+    seguido de [  ] com o indice desejado dentro.
+    \newpage
+
+    \section{Matriz}
+    \subsection{Definição}
+    Uma matriz é praticamente a mesma coisa que uma matriz
+    matemática, porém segue as mesmas regras que nossos vetores.
+    Ou seja, para criar uma, e preciso nomea-lá e colocar os
+    [  ] com o tamanho da matriz, porém ela recebe dois [  ],
+    visto que uma matriz tem no mínimo duas dimensões.
+
+    \subsection*{Exemplo}
+    Vamos fazer um jogo da velha simples, de uma jogada só, onde
+    o \emph{'X'} deve ganhar, para isso, montaremos uma matriz
+    quadrada de grau $3$, ou seja, uma matriz $3$x$3$:
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=1\textwidth]{matrixEmC.png}
+        \caption{Matriz em C}
+        \label{fig:matrizEmC}
+    \end{figure}
+
+    Note que para poder imprimir uma matriz, precisamos de dois
+    \emph{for}, visto que igual na matemática, os indices dos 
+    elementos de uma matriz são dados pelo formato $ij$. Também
+    observe que estamos agora pedindo para o usuário uma
+    coordenada $(x,y)$ para que possamos mudar algum elemento
+    em especifico da matriz.
+    
+    Também é preciso notar duas coisas, para acessar um item
+    dentro de uma matriz, fazemos um processo parecido com o do
+    vetor, dizemos o nome da matriz acompanhado de dois [  ]
+    com os indices $ji$, isso mesmo, de forma invertida.
+    \newpage
+
+    \section{Struct}
+    \subsection{Definição}
+    \subsection*{Exemplo}
+    \newpage
+
+    \section{Alocação Dinâmica}
+    \subsection{Definição}
+    \subsection*{Exemplo}
+\end{document}
